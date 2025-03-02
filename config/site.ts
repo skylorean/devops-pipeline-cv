@@ -1,69 +1,27 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
-  navItems: [
-    {
-      label: "Home",
-      href: "/",
+  name: "CV",
+  data: {
+    user: {
+      name: "Vladimir Danilov",
+      summary: `Full-Stack Developer, mainly working on TS with .NET`,
+      description: "Full-Stack Developer",
     },
-    {
-      label: "Docs",
-      href: "/docs",
+    experience: [
+      {
+        title: "Junior Software Engineer",
+        company: "TravelLine, Yoshkar-Ola",
+        date: "August 2023 - Current",
+        points: [],
+      },
+    ],
+
+    contact: {
+      location: "Yoshkar-Ola, Mari El, Russia (Open to Remote)",
+      phone: "+7(999)999-99-99",
+      email: "skylorean@gmail.com",
+      github: "https://github.com/skylorean",
     },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-  ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
-  ],
-  links: {
-    github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
   },
 };

@@ -1,56 +1,61 @@
 import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-import { button as buttonStyles } from "@heroui/theme";
 
 import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
+import Header from "@/components/header";
+import Section from "@/components/section";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
-        <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
-        </div>
-      </div>
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        <Header />
+        <Section title="Summary">
+          <p>{siteConfig.data.user.summary}</p>
+        </Section>
 
-      <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
-      </div>
+        <Section title="Work Experience">
+          {siteConfig.data.experience.map((exp, i) => (
+            <div key={i} className="mb-6">
+              <h3 className="font-semibold text-lg">{exp.title}</h3>
+              <div className="flex justify-between">
+                <span>{exp.company}</span>
+                <span>{exp.date}</span>
+              </div>
+              <ul className="list-disc ml-6 mt-2">
+                {exp.points.map((point, j) => (
+                  <li key={j} className="mb-2">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Section>
 
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
+        <Section title="Contact">
+          <div className="space-y-2">
+            <p>{siteConfig.data.contact.location}</p>
+            <p>{siteConfig.data.contact.phone}</p>
+            <a
+              className="text-blue-600 hover:underline"
+              href={`mailto:${siteConfig.data.contact.email}`}
+            >
+              {siteConfig.data.contact.email}
+            </a>
+            <br />
+
+            <Link
+              isExternal
+              aria-label="Github"
+              href={siteConfig.data.contact.github}
+            >
+              <GithubIcon className="text-default-500" />
+              <p>GitHub Profile</p>
+            </Link>
+          </div>
+        </Section>
       </div>
-    </section>
+    </div>
   );
 }
